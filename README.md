@@ -57,7 +57,17 @@ The pipeline implemented in the notebook follows these steps:
 
 ## Results
 
-### Validation Loss
+The model was trained for approximately 8 hours on a single NVIDIA T4 GPU. Training exhibited stable convergence, with validation loss decreasing smoothly and no signs of divergence or overfitting.
+
+Qualitative evaluation was performed using multi-step rollouts on unseen validation scenarios. As shown in the rollout visualizations, the learned simulator is able to:
+
+* Maintain stable long-horizon dynamics
+
+* Preserve coherent particle interactions
+
+* Avoid error accumulation and physical drift over time
+
+Despite being trained with a one-step prediction objective, the model generalizes effectively to long rollouts, producing physically plausible trajectories across different initial conditions. These results are consistent with prior findings in graph-network-based physical simulation and demonstrate that the learned interaction model captures the underlying dynamics rather than merely memorizing short-term behavior.
 
 The training process shows stable convergence, with validation loss decreasing smoothly over epochs.
 
@@ -68,6 +78,16 @@ The training process shows stable convergence, with validation loss decreasing s
 
 These plots demonstrate that the model generalizes beyond the training data and avoids overfitting.
 
+### Rollout Simulation
+
+The following GIFs show qualitative rollouts produced by the trained graph network. Each rollout corresponds to an unseen validation scenario and demonstrates that the learned dynamics remain coherent over multiple timesteps without divergence.
+
+<p align="center">
+  <img src="assets/final_output_sample_1.gif" width="100%" />
+  <img src="assets/final_output_sample_2.gif" width="100%" />
+  <img src="assets/final_output_sample_3.gif" width="100%" />
+</p>
+
 ---
 
 ## Requirements
@@ -75,8 +95,8 @@ These plots demonstrate that the model generalizes beyond the training data and 
 The notebook relies on standard scientific Python and deep learning libraries:
 
 * Python 3.10 (minimum)
-* NumPy
-* PyTorch
+* NumPy < 2
+* PyTorch 2.2.0 + cu121
 * PyTorch Geometric (or equivalent graph utilities)
 * Matplotlib
 * tqdm
