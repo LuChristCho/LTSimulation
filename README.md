@@ -68,14 +68,6 @@ The training process shows stable convergence, with validation loss decreasing s
 
 These plots demonstrate that the model generalizes beyond the training data and avoids overfitting.
 
-### Rollout Simulation
-
-A sample rollout from the trained model is provided as a video:
-
-* **File:** `assets/final_output_sample.mp4`
-* Demonstrates long-term stability of learned dynamics
-* Shows coherent physical behavior emerging from learned interactions
-
 ---
 
 ## Requirements
